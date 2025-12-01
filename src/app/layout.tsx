@@ -33,10 +33,8 @@ export default function RootLayout({
   return (
     // 1. Injeta as variáveis de fonte no HTML
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      {/* 2. Aplica as classes Tailwind (fundo e fonte padrão) e ignora o erro de extensão (hydration) */}
-      <body className="font-inter bg-bg-main" suppressHydrationWarning={true}>
-        {children}
-      </body>
+      {/* 2. Aplica as classes Tailwind (fundo e fonte padrão) */}
+      <body className="font-inter bg-bg-main">{children}</body>
     </html>
   )
 }
