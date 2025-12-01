@@ -1,0 +1,1 @@
+//(O componente GSAP isolado)

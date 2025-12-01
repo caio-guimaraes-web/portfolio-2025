@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import './globals.css'
+import { Navbar } from './components/layout/Navbar'
 import type { Metadata } from 'next'
 
 // Importe as duas fontes
@@ -34,6 +35,7 @@ export default function RootLayout({
     // 1. Injeta as variáveis de fonte no HTML
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       {/* 2. Aplica as classes Tailwind (fundo e fonte padrão) */}
+      <Navbar />
       <body className="font-inter bg-bg-main">{children}</body>
     </html>
   )

@@ -1,21 +1,23 @@
-export default function HomePage() {
+import { HeroSection } from '@/app/components/homeSections/hero/HeroSection'
+
+// Futuramente importaremos as outras seções aqui:
+// import { AboutSection } from "@/components/sections/about/AboutSection";
+// import { ProjectsSection } from "@/components/sections/projects/ProjectsSection";
+
+export default function Home() {
   return (
-    // TESTE FINAL: O fundo DEVE ser 'bg-brand-primary' (#35eedf - Ciano/Verde Água)
-    <main className="min-h-screen p-10 bg-brand-primary">
-      {/* Teste da fonte Space Grotesk e cor de título */}
-      <h1 className="text-4xl font-space font-light leading-snug text-text-title mb-4">
-        ✅ Space Grotesk Aplicada
-      </h1>
+    // O elemento <main> é o wrapper semântico do conteúdo principal
+    // flex-col garante que as seções fiquem uma abaixo da outra
+    <main className="flex flex-col w-full min-h-screen bg-black">
+      {/* Seção 1 */}
+      <HeroSection />
 
-      {/* Teste da fonte Inter e cor de texto padrão */}
-      <p className="font-inter text-text-high text-xl">
-        ✅ Inter Aplicada (Se esta fonte for mais padrão).
-      </p>
-
-      <p className="text-lg mt-4 text-text-low">
-        Se o fundo for ciano e as fontes se diferenciarem, o setup foi 100%
-        bem-sucedido!
-      </p>
+      {/* Abaixo virão as próximas seções.
+        Como exemplo, uma div vazia para testar o scroll e o comportamento 'fixed' do menu
+      */}
+      <section className="h-screen w-full bg-zinc-900 flex items-center justify-center text-zinc-500">
+        (Espaço reservado para a Seção 2)
+      </section>
     </main>
   )
 }
