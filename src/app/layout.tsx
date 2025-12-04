@@ -35,8 +35,10 @@ export default function RootLayout({
     // 1. Injeta as variáveis de fonte no HTML
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       {/* 2. Aplica as classes Tailwind (fundo e fonte padrão) */}
-      <Navbar />
-      <body className="font-inter bg-bg-main">{children}</body>
+      <body className="font-inter bg-bg-main">
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }

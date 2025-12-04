@@ -1,24 +1,42 @@
-//(O Container principal da seção)
 import React from 'react'
+import { HeroTextAnimation } from './HeroTextAnimation'
+import { HeroFooter } from './HeroFooter'
 
 export function HeroSection() {
   return (
-    // Container Principal da Hero
-    // h-screen garante que ocupe 100% da altura da viewport
-    // flex-col prepara para os elementos internos (Texto, Toggle, Footer)
-    <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#0a0a0a] text-white px-4 lg:px-20 py-10">
-      {/* Placeholder visual central só pra sabermos que é a Hero */}
-      <div className="flex-1 flex flex-col justify-center items-start">
-        <p className="text-gray-400 mb-4">Hello 👋, my name is Caio...</p>
-        <h1 className="text-6xl md:text-8xl font-bold border border-dashed border-gray-700 p-4 w-full text-center opacity-50">
-          [ ÁREA DO H1 ANIMADO ]
-        </h1>
+    <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#050505] text-white px-6 lg:px-24 pt-32 pb-10">
+      {/* BACKGROUND EFFECTS */}
+      {/* Luz/Gradiente Verde-Ciano no topo direito (efeito de spot light) */}
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* CONTEÚDO SUPERIOR 
+        Alinhamento do Hello e Intro
+      */}
+      <div className="flex-1 flex flex-col justify-center z-10">
+        <div className="space-y-2 mb-4 lg:mb-0">
+          <p className="text-xl lg:text-2xl text-gray-300 font-light flex items-center gap-2">
+            Hello <span className="animate-pulse">👋</span>,
+          </p>
+          <p className="text-xl lg:text-2xl text-gray-300 font-light">
+            my name is Caio Guimarães.
+          </p>
+          <p className="text-xl lg:text-2xl text-gray-300 font-light">
+            I&apos;m a ...
+          </p>
+        </div>
+
+        {/* COMPONENTE DO TEXTO GIGANTE */}
+        <HeroTextAnimation />
+
+        {/* SUBTÍTULO COMPLEMENTAR */}
+        <p className="text-sm lg:text-lg tracking-[0.5em] text-gray-500 font-light mt-2 uppercase text-center lg:text-center w-full">
+          Front-end Focused
+        </p>
       </div>
 
-      {/* Placeholder do Footer da seção */}
-      <div className="hidden lg:flex justify-between items-end border-t border-gray-800 pt-4 w-full">
-        <span>Toggle Animation (Off)</span>
-        <span>Social Links Area</span>
+      {/* RODAPÉ DA SEÇÃO (Toggle, Infos, Redes) */}
+      <div className="z-10 w-full">
+        <HeroFooter />
       </div>
     </section>
   )
