@@ -11,9 +11,10 @@ export function Navbar() {
         Lógica futura: opacity-0 inicialmente, mudando para opacity-100 
         quando o scroll passar da altura da tela (window.innerHeight).
       */}
-      <div className="opacity-1 transition-opacity duration-500 font-bold text-xl tracking-tighter">
-        CAIO GUIMARÃES
-      </div>
+      <h2 className="opacity-1 transition-opacity duration-500 font-extralight text-2xl text-quaternary tracking-tighter">
+        &#123;...caioGuimaraes.<span className="text-brand-primary">dev</span>
+        &#125;
+      </h2>
 
       {/* Área do Menu Hamburguer 
         Aqui entrará o componente <Sheet> do ShadcnUI.

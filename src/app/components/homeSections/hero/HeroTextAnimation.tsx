@@ -16,8 +16,9 @@ export function HeroTextAnimation() {
         - O texto "WEB DEVELO..." tem um efeito listrado (striped) na imagem.
         - Para simplificar nesta etapa 1, faremos branco sólido. O efeito listrado é CSS avançado (background-clip: text) que podemos adicionar no refinamento.
       */}
-      <h1 className="text-[15vw] leading-[0.85] font-bold text-white whitespace-nowrap tracking-tighter">
-        FULLSTACK <span className="text-cyan-400/20 italic">WEB</span> DEV
+      <h1 className="text-[15vw] leading-[0.85] font-thin text-white whitespace-nowrap tracking-tighter">
+        FULLSTACK{' '}
+        <span className="text-cyan-400/20 font-extrabold">WEB DEVELOPER</span>
       </h1>
 
       {/* Nota: O texto real do design é muito longo para caber na tela sem scroll.

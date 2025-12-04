@@ -8,7 +8,7 @@ export default function Home() {
   return (
     // O elemento <main> é o wrapper semântico do conteúdo principal
     // flex-col garante que as seções fiquem uma abaixo da outra
-    <main className="flex flex-col w-full min-h-screen bg-black">
+    <main className="flex flex-col w-full min-h-screen">
       {/* Seção 1 */}
       <HeroSection />
 

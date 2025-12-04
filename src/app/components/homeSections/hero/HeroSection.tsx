@@ -4,10 +4,10 @@ import { HeroFooter } from './HeroFooter'
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#050505] text-white px-6 lg:px-24 pt-32 pb-10">
+    <section className="relative h-screen w-full flex flex-col justify-between overflow-hidden text-white px-6 lg:px-24 pt-32 pb-10">
       {/* BACKGROUND EFFECTS */}
       {/* Luz/Gradiente Verde-Ciano no topo direito (efeito de spot light) */}
-      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-5%] w-[50vw] h-[65vh] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
 
       {/* CONTEÚDO SUPERIOR 
         Alinhamento do Hello e Intro
