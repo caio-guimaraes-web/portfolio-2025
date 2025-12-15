@@ -1,6 +1,11 @@
 //(Toggle on/off + Redes Sociais)
-import { Github, Linkedin, ArrowDown } from 'lucide-react'
-// Ícones genéricos do lucide. Depois podemos trocar pelos SVGs específicos se você tiver.
+import { ArrowDown } from 'lucide-react'
+import {
+  GitIcon,
+  LinkedinIcon,
+  BehanceIcon,
+  WhatsAppIcon,
+} from '@/app/components/socialMediaIconComp/SocialMediaIconsComp'
 
 export function HeroFooter() {
   return (
@@ -38,15 +43,12 @@ export function HeroFooter() {
           </p>
         </div>
 
-        {/* Ícones Sociais */}
+        {/* social icons */}
         <div className="flex gap-6">
-          {/* Trocando cor para o Ciano da marca no hover */}
-          <Github className="w-6 h-6 hover:text-cyan-400 cursor-pointer transition-colors" />
-          <Linkedin className="w-6 h-6 hover:text-cyan-400 cursor-pointer transition-colors" />
-          <div className="font-bold text-xl hover:text-cyan-400 cursor-pointer transition-colors">
-            Be
-          </div>{' '}
-          {/* Behance placeholder */}
+          <GitIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
+          <LinkedinIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
+          <BehanceIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
+          <WhatsAppIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
         </div>
       </div>
     </div>
