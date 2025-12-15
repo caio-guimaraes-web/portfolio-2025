@@ -1,5 +1,6 @@
 //(Toggle on/off + Redes Sociais)
 import { ArrowDown } from 'lucide-react'
+import { HeroAudienceToggle } from '../../heroAudienceToggle'
 import {
   GitIcon,
   LinkedinIcon,
@@ -29,9 +30,9 @@ export function HeroFooter() {
       </div>
 
       {/* Área Direita: Abas e Redes Sociais */}
-      <div className="hidden lg:flex flex-col items-end text-right gap-6 max-w-md">
-        {/* Texto descritivo / Abas */}
-        <div className="text-sm text-gray-400 leading-relaxed space-y-2">
+      <div className="hidden lg:flex flex-col items-end text-right gap-6 max-w-xs">
+        {/* HeroAudienceToggle / em construção */}
+        {/* <div className="text-sm text-gray-400 leading-relaxed space-y-2">
           <p>
             I&apos;m looking for opportunities to join teams that build fast,
             scalable, and easy-to-use web applications with modern JavaScript
@@ -41,7 +42,8 @@ export function HeroFooter() {
             I combine React on the front end with robust server-side solutions
             using Node.js.
           </p>
-        </div>
+        </div> */}
+        <HeroAudienceToggle />
 
         {/* social icons */}
         <div className="flex gap-6">
