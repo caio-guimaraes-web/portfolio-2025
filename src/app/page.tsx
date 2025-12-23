@@ -1,4 +1,5 @@
 import { HeroSection } from '@/app/components/homeSections/hero/HeroSection'
+import { AboutMeSection } from '@/app/components/homeSections/about/AboutMeSection'
 
 // Futuramente importaremos as outras seções aqui:
 // import { AboutSection } from "@/components/sections/about/AboutSection";
@@ -12,11 +13,14 @@ export default function Home() {
       {/* Seção 1 */}
       <HeroSection />
 
+      {/* Seção 2 */}
+      <AboutMeSection />
+
       {/* Abaixo virão as próximas seções.
         Como exemplo, uma div vazia para testar o scroll e o comportamento 'fixed' do menu
       */}
       <section className="h-screen w-full bg-zinc-900 flex items-center justify-center text-zinc-500">
-        (Espaço reservado para a Seção 2)
+        (Espaço reservado para próxima seção)
       </section>
     </main>
   )
