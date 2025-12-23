@@ -32,6 +32,9 @@ export function HeroAudienceToggle({ className }: HeroAudienceToggleProps) {
         )}
       >
         {/* SVG Arrow */}
+        {/* <svg width="20" height="20" viewBox="0 0 24 24" fill="#6C7C8C">
+          <path d="M12 2.4C17.292 2.4 21.6 6.708 21.6 12C21.6 17.292 17.292 21.6 12 21.6C6.708 21.6 2.4 17.292 2.4 12C2.4 6.708 6.708 2.4 12 2.4ZM12 0C5.376 0 0 5.376 0 12C0 18.624 5.376 24 12 24C18.624 24 24 18.624 24 12C24 5.376 18.624 0 12 0ZM13.2 12V7.2H10.8V12H7.2L12 16.8L16.8 12L13.2 12Z" />
+        </svg> */}
         <svg
           width="20"
           height="20"
