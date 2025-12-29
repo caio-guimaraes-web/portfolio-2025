@@ -5,7 +5,7 @@ import profileImg from '@/assets/homeSections/aboutSection/profile.png'
 
 export function AboutImage() {
   return (
-    <div className="relative w-full lg:w-[40%] h-[360px] lg:h-[520px] flex items-center justify-center">
+    <div className="relative w-full lg:w-[40%] h-[360px] lg:h-[520px] flex items-center justify-end">
       {/* Imagem */}
       <Image
         src={profileImg}
