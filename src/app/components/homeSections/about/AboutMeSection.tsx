@@ -15,24 +15,26 @@ export function AboutMeSection() {
       id="about"
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden text-white px-6 lg:px-24 pt-32 pb-10"
     >
-      {/* BACKGROUND EFFECTS */}
-      {/* Glow sutil verde-ciano para manter identidade do Hero */}
-      <div className="absolute bottom-[-20%] left-[-10%] w-[45vw] h-[60vh] bg-cyan-900/20 rounded-full blur-[140px] pointer-events-none" />
+      {/* BG Effects -  Glow sutil verde-ciano, decidir depois se será animado */}
+      {/* <div className="absolute bottom-[-20%] left-[-10%] w-[45vw] h-[60vh] bg-cyan-900/20 rounded-full blur-[140px] pointer-events-none" /> */}
+
+      <div className="absolute bottom-0 left-0 sm:left-1/4">
+        <AboutImage />
+      </div>
 
       {/* HEADLINE SUPERIOR */}
-      <div className="z-10 w-full text-center mb-16">
-        <h2 className="text-sm lg:text-lg tracking-[0.6em] text-gray-500 font-light uppercase">
+      <div className="z-10 w-full text-center mt-14">
+        <h2 className="text-xl lg:text-2xl tracking-[0.6em] text-gray-500 font-light uppercase">
           Aesthetic Sense
         </h2>
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="z-10 flex-1 w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-        {/* IMAGEM */}
-        <AboutImage />
-
+      <div className="z-10 flex-1 w-full flex lg:flex-row items-center gap-4 sm:gap-12 lg:gap-20">
         {/* DIVISOR */}
-        <VerticalDivider />
+        <div className="ml-[25%] sm:ml-[50%]">
+          <VerticalDivider />
+        </div>
 
         {/* CONTEÚDO TEXTUAL */}
         <AboutContent />
