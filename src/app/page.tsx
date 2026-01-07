@@ -1,5 +1,6 @@
 import { HeroSection } from '@/app/components/homeSections/hero/HeroSection'
 import { AboutMeSection } from '@/app/components/homeSections/about/AboutMeSection'
+import { MySkillsSection } from './components/homeSections/skills/MySkillsSection'
 
 // Futuramente importaremos as outras seções aqui:
 // import { AboutSection } from "@/components/sections/about/AboutSection";
@@ -15,6 +16,9 @@ export default function Home() {
 
       {/* Seção 2 */}
       <AboutMeSection />
+
+      {/* Seção 3 */}
+      <MySkillsSection />
 
       {/* Abaixo virão as próximas seções.
         Como exemplo, uma div vazia para testar o scroll e o comportamento 'fixed' do menu
