@@ -6,6 +6,7 @@ import { SkillContent } from './SkillContent'
 
 import { VerticalDivider } from '../../reusable/verticalDivider/VerticalDivider'
 import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
+import { SkillsTabs } from './skillsTabs/SkillsTabs'
 
 export function MySkillsSection() {
   return (
@@ -27,7 +28,7 @@ export function MySkillsSection() {
         </div>
 
         {/* SKILLS TABS */}
-        <div>SKILLS TABS</div>
+        <SkillsTabs />
       </div>
 
       {/* INDICADOR DE SCROLL */}
