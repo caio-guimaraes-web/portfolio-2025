@@ -4,8 +4,8 @@ import React from 'react'
 
 import { SkillContent } from './SkillContent'
 
-import { VerticalDivider } from '../../verticalDivider/VerticalDivider'
-import { ScrollNextSection } from '../../scrollNextSection/ScrollNextSection'
+import { VerticalDivider } from '../../reusable/verticalDivider/VerticalDivider'
+import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
 
 export function MySkillsSection() {
   return (

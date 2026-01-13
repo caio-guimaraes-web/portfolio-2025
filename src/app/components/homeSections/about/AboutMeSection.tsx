@@ -2,12 +2,12 @@
 import React from 'react'
 import { AboutImage } from './AboutImage'
 /* import { AboutDivider } from './AboutDivider' */
-import { VerticalDivider } from '../../verticalDivider/VerticalDivider'
+import { VerticalDivider } from '../../reusable/verticalDivider/VerticalDivider'
 
 import { AboutContent } from './AboutContent'
 
 /* import { AboutScrollIndicator } from './AboutScrollIndicator' */
-import { ScrollNextSection } from '../../scrollNextSection/ScrollNextSection'
+import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
 
 export function AboutMeSection() {
   return (

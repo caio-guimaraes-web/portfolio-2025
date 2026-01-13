@@ -1,12 +1,12 @@
 //(Toggle on/off + Redes Sociais)
 import { ArrowDown } from 'lucide-react'
-import { HeroAudienceToggle } from '../../heroAudienceToggle'
+import { HeroAudienceToggle } from '../../reusable/heroAudienceToggle'
 import {
   GitIcon,
   LinkedinIcon,
   BehanceIcon,
   WhatsAppIcon,
-} from '@/app/components/socialMediaIconComp/SocialMediaIconsComp'
+} from '@/app/components/reusable/socialMediaIconComp/SocialMediaIconsComp'
 
 export function HeroFooter() {
   return (

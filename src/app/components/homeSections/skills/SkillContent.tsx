@@ -1,7 +1,7 @@
 import React from 'react'
-import { HomeSectionsTitle } from '../homeSectionsTitles/HomeSectionsTitle'
+import { HomeSectionsTitle } from '../../reusable/homeSectionsTitles/HomeSectionsTitle'
 import { SkillText } from './SkillText'
-import { HomeBigCTA } from '../homeBigCTA/HomeBigCTA'
+import { HomeBigCTA } from '../../reusable/homeBigCTA/HomeBigCTA'
 
 export function SkillContent() {
   return (
