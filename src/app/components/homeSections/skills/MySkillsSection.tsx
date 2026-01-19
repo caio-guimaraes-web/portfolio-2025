@@ -18,12 +18,19 @@ export function MySkillsSection() {
       <div className="absolute bottom-[-20%] left-[-10%] w-[45vw] h-[60vh] bg-cyan-900/20 rounded-full blur-[140px] pointer-events-none" />
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="z-10 flex-1 w-full flex lg:flex-row items-center gap-4 sm:gap-12 lg:gap-20">
+      <div
+        className="z-10 flex-1 w-full flex flex-col sm:flex-row items-center
+          gap-8 sm:gap-12 lg:gap-20 pr-4 sm:pr-0
+          relative
+          after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-[2px]
+          after:bg-gradient-to-b after:from-cyan-300 after:to-lime-400 after:opacity-80
+          sm:after:hidden"
+      >
         {/* CONTEÚDO TEXTUAL */}
         <SkillContent />
 
         {/* DIVISOR */}
-        <div className="z-10">
+        <div className="z-10 hidden sm:block">
           <VerticalDivider />
         </div>
 
