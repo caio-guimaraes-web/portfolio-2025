@@ -3,10 +3,7 @@ import { AboutMeSection } from '@/app/components/homeSections/about/AboutMeSecti
 import { MySkillsSection } from './components/homeSections/skills/MySkillsSection'
 import { GithubPinnedSection } from './components/homeSections/gitPinned/GithubPinnedSection'
 import { ImpactPhraseSection } from './components/homeSections/impactPhrase/ImpactPhraseSection'
-
-// Futuramente importaremos as outras seções aqui:
-// import { AboutSection } from "@/components/sections/about/AboutSection";
-// import { ProjectsSection } from "@/components/sections/projects/ProjectsSection";
+import { LetsTalkSection } from './components/homeSections/letstalk/LetsTalkSection'
 
 export default function Home() {
   return (
@@ -27,6 +24,9 @@ export default function Home() {
 
       {/* Seção 5 */}
       <ImpactPhraseSection />
+
+      {/* Seção 6 */}
+      <LetsTalkSection />
 
       {/* Abaixo virão as próximas seções.
         Como exemplo, uma div vazia para testar o scroll e o comportamento 'fixed' do menu
