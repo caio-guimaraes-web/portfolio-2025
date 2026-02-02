@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import './globals.css'
 import { Navbar } from './components/layout/Navbar'
+import { FooterSection } from './components/Footer'
 import type { Metadata } from 'next'
 
 // Importe as duas fontes
@@ -37,7 +38,10 @@ export default function RootLayout({
       {/* 2. Aplica as classes Tailwind (fundo e fonte padrão) */}
       <body className="font-inter bg-bg-main">
         <Navbar />
+
         {children}
+
+        <FooterSection />
       </body>
     </html>
   )

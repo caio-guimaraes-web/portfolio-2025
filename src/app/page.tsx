@@ -28,12 +28,9 @@ export default function Home() {
       {/* Seção 6 */}
       <LetsTalkSection />
 
-      {/* Abaixo virão as próximas seções.
-        Como exemplo, uma div vazia para testar o scroll e o comportamento 'fixed' do menu
-      */}
-      <section className="h-screen w-full bg-zinc-900 flex items-center justify-center text-zinc-500">
+      {/* <section className="h-screen w-full bg-zinc-900 flex items-center justify-center text-zinc-500">
         (Espaço reservado para próxima seção)
-      </section>
+      </section> */}
     </main>
   )
 }
