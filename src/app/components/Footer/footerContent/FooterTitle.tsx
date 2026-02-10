@@ -1,8 +1,8 @@
 export function FooterTitle() {
   return (
-    <h2 className="text-white text-2xl md:text-3xl font-light">
+    <h2 className="text-white text-2xl md:text-3xl font-space">
       Appreciate your visit – <br />
-      <span className="font-semibold">let’s connect!</span>
+      <span className="text-cyan-300">let’s connect!</span>
     </h2>
   )
 }

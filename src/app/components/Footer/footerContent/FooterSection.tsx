@@ -8,21 +8,22 @@ import { FooterCopyright } from './FooterCopyright'
 
 export function FooterSection() {
   return (
-    <footer className="relative w-full bg-slate-900 overflow-hidden pt-32 pb-12">
-      {/* Waves / visual layer (static for now) */}
+    <footer className="relative w-full overflow-hidden">
+      {/* Waves visual layer */}
       <FooterWaves />
 
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 gap-12 mb-32">
-        <FooterTitle />
-        <FooterSocialLinks />
-      </div>
+      {/* Real footer content */}
+      <section className="relative z-10 bg-slate-800 pt-32 pb-12">
+        <div className="flex flex-col items-center text-center px-6 gap-12 mb-32">
+          <FooterTitle />
+          <FooterSocialLinks />
+        </div>
 
-      {/* footer signatures */}
-      <div className="relative z-10 flex flex-col-reverse sm:flex-row sm:justify-between px-6 gap-12">
-        <FooterCopyright />
-        <FooterSignature />
-      </div>
+        <div className="flex flex-col sm:flex-row sm:justify-between px-6 gap-12">
+          <FooterCopyright />
+          <FooterSignature />
+        </div>
+      </section>
     </footer>
   )
 }
