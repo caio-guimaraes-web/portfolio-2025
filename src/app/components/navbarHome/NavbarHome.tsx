@@ -1,12 +1,14 @@
-// components/Navbar/NavbarHome.tsx
+// components/NavbarHome/NavbarHome.tsx
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MenuToggle } from './MenuToggle'
 import { SideMenu } from './SideMenu'
+import { navItems } from './navItems'
 
 export function NavbarHome() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>('hero')
 
   const handleToggle = () => {
     setIsOpen((prev) => !prev)
@@ -18,6 +20,31 @@ export function NavbarHome() {
     setIsOpen(false)
   }
 
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.target))
+      .filter((section): section is HTMLElement => section !== null)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        threshold: 0.6,
+      },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section))
+    }
+  }, [])
+
   return (
     <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between p-6 lg:p-12 text-white">
       {/* Logo */}
@@ -26,11 +53,13 @@ export function NavbarHome() {
         &#125;
       </h2>
 
-      {/* Menu toggle */}
       <MenuToggle isOpen={isOpen} onToggle={handleToggle} />
 
-      {/* Side menu */}
-      <SideMenu isOpen={isOpen} onNavigate={handleNavigate} />
+      <SideMenu
+        isOpen={isOpen}
+        onNavigate={handleNavigate}
+        activeSection={activeSection}
+      />
     </nav>
   )
 }
