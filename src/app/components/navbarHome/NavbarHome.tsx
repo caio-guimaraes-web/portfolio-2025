@@ -21,7 +21,7 @@ export function NavbarHome() {
   return (
     <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-between p-6 lg:p-12 text-white">
       {/* Logo */}
-      <h2 className="font-extralight text-2xl tracking-tighter text-quaternary">
+      <h2 className="font-extralight text-2xl tracking-tighter text-quaternary hover:text-text-high transition-colors duration-300">
         &#123;...caioGuimaraes.<span className="text-brand-primary">dev</span>
         &#125;
       </h2>
