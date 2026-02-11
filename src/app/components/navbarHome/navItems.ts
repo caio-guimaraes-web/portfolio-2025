@@ -5,5 +5,5 @@ export const navItems = [
   { label: 'Sobre', target: 'about' },
   { label: 'Skills', target: 'skills' },
   { label: 'Projetos', target: 'projects' },
-  { label: 'Contato', target: 'contact' },
+  { label: 'Contato', target: 'lets-talk' },
 ]

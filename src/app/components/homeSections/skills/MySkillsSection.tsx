@@ -11,7 +11,7 @@ import { SkillsTabs } from './skillsTabs/SkillsTabs'
 export function MySkillsSection() {
   return (
     <section
-      id="about"
+      id="skills"
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden text-white px-6 lg:px-24 pt-32 pb-10"
     >
       {/* BG Effects -  Glow sutil verde-ciano, decidir depois se será animado */}
