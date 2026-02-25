@@ -68,7 +68,7 @@ export function HeroSection() {
     >
       <div className="absolute top-[-10%] right-[-5%] w-[50vw] h-[65vh] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="sticky top-0 h-screen flex flex-col justify-start">
+      <div className="sticky top-0 h-screen flex flex-col justify-around">
         <div className="flex flex-col justify-center px-6 pt-32 lg:px-24">
           <div className="space-y-2 mb-4">
             <p className="text-xl lg:text-2xl text-gray-300 font-light flex items-center gap-2">
