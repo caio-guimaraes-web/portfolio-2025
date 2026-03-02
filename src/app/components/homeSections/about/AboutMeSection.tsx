@@ -8,6 +8,7 @@ import { AboutContent } from './AboutContent'
 
 /* import { AboutScrollIndicator } from './AboutScrollIndicator' */
 import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
+import { AnimatedHeadline } from './AnimatedHeadline'
 
 export function AboutMeSection() {
   return (
@@ -24,9 +25,7 @@ export function AboutMeSection() {
 
       {/* HEADLINE SUPERIOR */}
       <div className="z-10 w-full text-center mt-14">
-        <h2 className="text-xl lg:text-2xl tracking-[0.6em] text-gray-500 font-light uppercase">
-          Aesthetic Sense
-        </h2>
+        <AnimatedHeadline />
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
