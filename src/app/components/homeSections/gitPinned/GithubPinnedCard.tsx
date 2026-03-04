@@ -1,9 +1,11 @@
-// card individual
-// GithubPinnedCard.tsx
-
 import React from 'react'
+import { GithubRepo } from './types'
 
-export function GithubPinnedCard() {
+interface Props {
+  repo: GithubRepo
+}
+
+export function GithubPinnedCard({ repo }: Props) {
   return (
     <article
       className="
@@ -18,29 +20,25 @@ export function GithubPinnedCard() {
         p-6
       "
     >
-      {/* TEXT CONTENT */}
       <div className="flex flex-col gap-4">
-        <h3 className="text-xl font-space text-cyan-300">
-          design-system-example-by-caio
-        </h3>
+        <h3 className="text-xl font-space text-cyan-300">{repo.name}</h3>
 
         <p className="text-sm text-zinc-400 leading-relaxed">
-          Primary Goal - Construction of a simple design system, documentation
-          of components and use of appropriate tools.
+          {repo.description ?? 'No description provided.'}
         </p>
       </div>
 
-      {/* TAGS */}
       <div className="flex gap-3 flex-wrap">
-        <span className="px-3 py-1 text-xs rounded-full bg-cyan-600 text-slate-950">
-          Storybook
-        </span>
-        <span className="px-3 py-1 text-xs rounded-full bg-cyan-600 text-slate-950">
-          Design System
-        </span>
+        {repo.languages.map((lang) => (
+          <span
+            key={lang}
+            className="px-3 py-1 text-xs rounded-full bg-cyan-600 text-slate-950"
+          >
+            {lang}
+          </span>
+        ))}
       </div>
 
-      {/* IMAGE PLACEHOLDER */}
       <div
         className="
           absolute bottom-0 right-0

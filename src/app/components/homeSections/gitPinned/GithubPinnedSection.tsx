@@ -1,12 +1,13 @@
-// GithubPinnedSection.tsx
-
 import React from 'react'
+import { fetchGithubRepos } from '@/lib/github/fetchGithubRepos'
 
 import { GithubPinnedHeader } from './GithubPinnedHeader'
 import { GithubPinnedScroll } from './GithubPinnedScroll'
 import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
 
-export function GithubPinnedSection() {
+export async function GithubPinnedSection() {
+  const repos = await fetchGithubRepos('caio-guimaraes-web')
+
   return (
     <section
       id="projects"
@@ -18,16 +19,13 @@ export function GithubPinnedSection() {
         pt-32 pb-10
       "
     >
-      {/* BG Effect */}
       <div className="absolute top-[-30%] right-[-20%] w-[50vw] h-[60vh] bg-lime-900/20 rounded-full blur-[160px] pointer-events-none" />
 
-      {/* CONTENT */}
       <div className="z-10 flex flex-col items-center gap-20">
         <GithubPinnedHeader />
-        <GithubPinnedScroll />
+        <GithubPinnedScroll repos={repos} />
       </div>
 
-      {/* SCROLL INDICATOR */}
       <div className="z-10 w-full flex justify-center mt-16">
         <ScrollNextSection />
       </div>
