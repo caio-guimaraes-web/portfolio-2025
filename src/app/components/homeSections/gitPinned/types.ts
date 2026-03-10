@@ -9,5 +9,6 @@ export interface GithubRepo {
   homepageUrl: string | null
   primaryLanguage: string | null
   languages: string[]
+  topics: string[] // 👈 ADICIONADO
   socialImage: string | null
 }

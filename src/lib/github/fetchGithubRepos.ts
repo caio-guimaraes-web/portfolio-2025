@@ -1,25 +1,22 @@
 import 'server-only'
-import { GithubRepo } from '@/app/components/homeSections/gitPinned/types'
+import { type GithubRepo } from '@/app/components/homeSections/gitPinned/types'
+
+const GITHUB_API = 'https://api.github.com'
 
 export async function fetchGithubRepos(
   username: string,
 ): Promise<GithubRepo[]> {
   const token = process.env.GITHUB_TOKEN
 
-  if (!token) {
-    throw new Error('GITHUB_TOKEN não definido.')
-  }
-
   const response = await fetch(
-    `https://api.github.com/users/${username}/repos?sort=updated`,
+    `${GITHUB_API}/users/${username}/repos?sort=updated`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github+json',
+        Accept: 'application/vnd.github.mercy-preview+json', // topics habilitado
       },
-      next: {
-        revalidate: 3600,
-      },
+      // A chave para o Next usar ISR:
+      next: { revalidate: 60 * 60 }, // 1h
     },
   )
 
@@ -27,17 +24,17 @@ export async function fetchGithubRepos(
     throw new Error(`GitHub API error: ${response.status}`)
   }
 
-  const data = await response.json()
+  const repos = await response.json()
 
-  // 🔥 Adaptando REST para seu formato
-  return data.map((repo: any) => ({
-    id: repo.id.toString(),
+  return repos.map((repo: any) => ({
+    id: String(repo.id),
     name: repo.name,
-    description: repo.description,
+    description: repo.description || null,
     url: repo.html_url,
-    homepageUrl: repo.homepage,
-    primaryLanguage: repo.language,
+    homepageUrl: repo.homepage || null,
+    primaryLanguage: repo.language || null,
     languages: repo.language ? [repo.language] : [],
-    socialImage: null, // REST não traz fácil — depois podemos melhorar via GraphQL
+    topics: repo.topics || [], // 👈 ADICIONADO
+    socialImage: repo.open_graph_image_url || null, // 👈 ADICIONADO
   }))
 }

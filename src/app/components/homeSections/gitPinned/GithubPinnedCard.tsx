@@ -28,15 +28,35 @@ export function GithubPinnedCard({ repo }: Props) {
         </p>
       </div>
 
-      <div className="flex gap-3 flex-wrap">
-        {repo.languages.map((lang) => (
-          <span
-            key={lang}
-            className="px-3 py-1 text-xs rounded-full bg-cyan-600 text-slate-950"
-          >
-            {lang}
-          </span>
-        ))}
+      <div>
+        <div className="flex gap-3 flex-wrap mb-4">
+          {repo.languages.map((lang) => (
+            <span
+              key={lang}
+              className="px-3 py-1 text-xs rounded-full bg-cyan-600 text-slate-950"
+            >
+              {lang}
+            </span>
+          ))}
+        </div>
+
+        {/* TOPICS - if exists */}
+        {repo.topics.length > 0 && (
+          <div className="hidden md:flex gap-3 flex-wrap">
+            {repo.topics.map((topic) => (
+              <span
+                key={topic}
+                className="
+          px-3 py-1 text-xs rounded-full
+          border border-cyan-700
+          text-cyan-700
+        "
+              >
+                {topic}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div
