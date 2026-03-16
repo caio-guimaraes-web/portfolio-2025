@@ -1,5 +1,6 @@
 import React from 'react'
 import { GithubRepo } from './types'
+import Image from 'next/image'
 
 interface Props {
   repo: GithubRepo
@@ -48,8 +49,8 @@ export function GithubPinnedCard({ repo }: Props) {
                 key={topic}
                 className="
           px-3 py-1 text-xs rounded-full
-          border border-cyan-700
-          text-cyan-700
+          border border-cyan-800
+          text-cyan-500
         "
               >
                 {topic}
@@ -59,17 +60,28 @@ export function GithubPinnedCard({ repo }: Props) {
         )}
       </div>
 
-      <div
-        className="
-          absolute bottom-0 right-0
-          w-[60%] h-[55%]
-          bg-gradient-to-br from-emerald-400 to-cyan-400
-          opacity-80
-          rotate-[-8deg]
-          translate-x-10 translate-y-6
-          rounded-xl
-        "
-      />
+      {/* SOCIAL IMAGE */}
+      <div className="absolute bottom-0 right-0 w-[60%] h-[55%] pointer-events-none rotate-[-8deg] translate-x-6 translate-y-4 rounded-xl overflow-hidden shadow-lg shadow-black/40 opacity-20">
+        {repo.socialImage ? (
+          <Image
+            src={repo.socialImage}
+            alt={`${repo.name} social preview`}
+            fill
+            sizes="(max-width: 768px) 60vw,
+             (max-width: 1200px) 45vw,
+             30vw"
+            className=" object-cover opacity-90"
+            priority={false}
+          />
+        ) : (
+          <div
+            className="
+        w-full h-full
+        bg-gradient-to-br from-emerald-400/40 to-cyan-400/40
+      "
+          />
+        )}
+      </div>
     </article>
   )
 }

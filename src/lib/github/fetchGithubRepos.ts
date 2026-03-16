@@ -9,14 +9,13 @@ export async function fetchGithubRepos(
   const token = process.env.GITHUB_TOKEN
 
   const response = await fetch(
-    `${GITHUB_API}/users/${username}/repos?sort=updated`,
+    `${GITHUB_API}/users/${username}/repos?sort=updated&per_page=200`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github.mercy-preview+json', // topics habilitado
+        Accept: 'application/vnd.github.mercy-preview+json', // topics OK
       },
-      // A chave para o Next usar ISR:
-      next: { revalidate: 60 * 60 }, // 1h
+      next: { revalidate: 60 * 60 },
     },
   )
 
@@ -26,15 +25,28 @@ export async function fetchGithubRepos(
 
   const repos = await response.json()
 
-  return repos.map((repo: any) => ({
-    id: String(repo.id),
-    name: repo.name,
-    description: repo.description || null,
-    url: repo.html_url,
-    homepageUrl: repo.homepage || null,
-    primaryLanguage: repo.language || null,
-    languages: repo.language ? [repo.language] : [],
-    topics: repo.topics || [], // 👈 ADICIONADO
-    socialImage: repo.open_graph_image_url || null, // 👈 ADICIONADO
-  }))
+  return (
+    repos
+      // ⭐ Apenas repos marcados como "pinned"
+      .filter((repo: any) => repo.topics?.includes('pinned'))
+
+      // ⭐ Transformação final
+      .map((repo: any) => {
+        const socialFallback = `https://opengraph.githubassets.com/1/${username}/${repo.name}`
+
+        return {
+          id: String(repo.id),
+          name: repo.name,
+          description: repo.description || null,
+          url: repo.html_url,
+          homepageUrl: repo.homepage || null,
+          primaryLanguage: repo.language || null,
+          languages: repo.language ? [repo.language] : [],
+          topics: repo.topics || [],
+
+          // 🔥 Usamos a chave já existente nos tipos e nos cards:
+          socialImage: repo.open_graph_image_url || socialFallback,
+        }
+      })
+  )
 }
