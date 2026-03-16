@@ -1,7 +1,18 @@
 import 'server-only'
-import { type GithubRepo } from '@/app/components/homeSections/gitPinned/types'
+import { GithubRepo } from '@/app/components/homeSections/gitPinned/types'
 
 const GITHUB_API = 'https://api.github.com'
+
+interface GithubApiRepo {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  homepage: string | null
+  language: string | null
+  topics?: string[]
+  open_graph_image_url?: string
+}
 
 export async function fetchGithubRepos(
   username: string,
@@ -13,9 +24,10 @@ export async function fetchGithubRepos(
     {
       headers: {
         Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github.mercy-preview+json', // topics OK
+        Accept: 'application/vnd.github.mercy-preview+json',
       },
-      next: { revalidate: 60 * 60 },
+      cache: 'force-cache',
+      next: { revalidate: 3600 },
     },
   )
 
@@ -23,30 +35,23 @@ export async function fetchGithubRepos(
     throw new Error(`GitHub API error: ${response.status}`)
   }
 
-  const repos = await response.json()
+  const repos: GithubApiRepo[] = await response.json()
 
-  return (
-    repos
-      // ⭐ Apenas repos marcados como "pinned"
-      .filter((repo: any) => repo.topics?.includes('pinned'))
+  return repos
+    .filter((repo) => repo.topics?.includes('pinned'))
+    .map((repo) => {
+      const socialFallback = `https://opengraph.githubassets.com/1/${username}/${repo.name}`
 
-      // ⭐ Transformação final
-      .map((repo: any) => {
-        const socialFallback = `https://opengraph.githubassets.com/1/${username}/${repo.name}`
-
-        return {
-          id: String(repo.id),
-          name: repo.name,
-          description: repo.description || null,
-          url: repo.html_url,
-          homepageUrl: repo.homepage || null,
-          primaryLanguage: repo.language || null,
-          languages: repo.language ? [repo.language] : [],
-          topics: repo.topics || [],
-
-          // 🔥 Usamos a chave já existente nos tipos e nos cards:
-          socialImage: repo.open_graph_image_url || socialFallback,
-        }
-      })
-  )
+      return {
+        id: String(repo.id),
+        name: repo.name,
+        description: repo.description || null,
+        url: repo.html_url,
+        homepageUrl: repo.homepage || null,
+        primaryLanguage: repo.language || null,
+        languages: repo.language ? [repo.language] : [],
+        topics: repo.topics || [],
+        socialImage: repo.open_graph_image_url || socialFallback,
+      }
+    })
 }

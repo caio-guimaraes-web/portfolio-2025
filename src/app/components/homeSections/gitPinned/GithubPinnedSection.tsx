@@ -1,13 +1,10 @@
-import React from 'react'
-import { fetchGithubRepos } from '@/lib/github/fetchGithubRepos'
-
+import React, { Suspense } from 'react'
 import { GithubPinnedHeader } from './GithubPinnedHeader'
-import { GithubPinnedScroll } from './GithubPinnedScroll'
 import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
+import { GithubPinnedList } from './GithubPinnedList'
+import { GithubPinnedScrollSkeleton } from './GithubPinnedScrollSkeleton'
 
-export async function GithubPinnedSection() {
-  const repos = await fetchGithubRepos('caio-guimaraes-web')
-
+export function GithubPinnedSection() {
   return (
     <section
       id="projects"
@@ -23,7 +20,11 @@ export async function GithubPinnedSection() {
 
       <div className="z-10 flex flex-col items-center gap-20">
         <GithubPinnedHeader />
-        <GithubPinnedScroll repos={repos} />
+
+        <Suspense fallback={<GithubPinnedScrollSkeleton />}>
+          {/* Agora o fetch está isolado aqui dentro */}
+          <GithubPinnedList username="caio-guimaraes-web" />
+        </Suspense>
       </div>
 
       <div className="z-10 w-full flex justify-center mt-16">
