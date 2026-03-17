@@ -41,7 +41,7 @@ export function HeroSection() {
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          markers: true, // 🔎 manter para validar
+          //markers: true, // 🔎 manter para validar
         },
       })
 

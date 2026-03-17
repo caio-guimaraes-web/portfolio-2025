@@ -1,3 +1,4 @@
+// GithubPinnedList.tsx
 import { fetchGithubRepos } from '@/lib/github/fetchGithubRepos'
 import { GithubPinnedScroll } from './GithubPinnedScroll'
 
