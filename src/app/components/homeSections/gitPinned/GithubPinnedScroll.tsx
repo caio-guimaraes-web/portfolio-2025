@@ -5,6 +5,8 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { GithubPinnedCard } from './GithubPinnedCard'
 import { GithubRepo } from './types'
+import { GithubPinnedHeader } from './GithubPinnedHeader'
+import { ScrollNextSection } from '../../reusable/scrollNextSection/ScrollNextSection'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -69,10 +71,22 @@ export function GithubPinnedScroll({ repos }: Props) {
   return (
     <div ref={sectionRef} className="relative w-full overflow-hidden">
       {/* Wrapper horizontal agora SEM px, SEM margin, SEM gaps que afetam o cálculo */}
-      <div ref={wrapperRef} className="flex w-max gap-12 will-change-transform">
+
+      <div className="pb-20 w-full flex justify-center">
+        <GithubPinnedHeader />
+      </div>
+
+      <div
+        ref={wrapperRef}
+        className="flex w-max gap-12 will-change-transform px-4"
+      >
         {repos.map((repo) => (
           <GithubPinnedCard key={repo.id} repo={repo} />
         ))}
+      </div>
+
+      <div className="z-10 w-full flex justify-center mt-16">
+        <ScrollNextSection />
       </div>
     </div>
   )
