@@ -21,6 +21,7 @@ export function GithubPinnedCard({ repo }: Props) {
         focus-visible:ring-2
         focus-visible:ring-cyan-400
         rounded-2xl
+        will-change-transform
       "
     >
       <article
