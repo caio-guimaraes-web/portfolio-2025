@@ -15,78 +15,81 @@ interface Props {
 }
 
 export function GithubPinnedScroll({ repos }: Props) {
+  // 🔥 Novo: Uma ref para o gatilho pai e outra para a seção que vai ficar fixa
+  const triggerRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
+    const trigger = triggerRef.current
     const section = sectionRef.current
     const wrapper = wrapperRef.current
-    if (!section || !wrapper) return
 
-    // Desabilita em mobile/touch
-    const isTouch = window.matchMedia('(hover: none)').matches
-    if (isTouch) return
+    if (!trigger || !section || !wrapper || repos.length === 0) return
 
-    const cardsWidth = wrapper.scrollWidth
-    const viewportWidth = window.innerWidth
-    const viewportHeight = window.innerHeight
-    const scrollDistance = Math.max(cardsWidth - viewportWidth, 0)
+    const mm = gsap.matchMedia()
 
-    if (scrollDistance <= 0) return
+    mm.add('(min-width: 768px) and (hover: hover)', () => {
+      const getScrollAmount = () => {
+        const cardsWidth = wrapper.scrollWidth
+        const viewportWidth = window.innerWidth
+        return Math.max(cardsWidth - viewportWidth, 0)
+      }
 
-    // 🔥 cálculo do offset real entre a seção pai (#projects) e o container interno
-    const parentSection = document.getElementById('projects')
-    const parentTop = parentSection?.getBoundingClientRect().top ?? 0
-    const innerTop = section.getBoundingClientRect().top
-    const offset = innerTop - parentTop
+      if (getScrollAmount() <= 0) return
 
-    const totalHeight = viewportHeight + scrollDistance
-    section.style.height = `${totalHeight}px`
-
-    const ctx = gsap.context(() => {
-      gsap.to(wrapper, {
-        x: -scrollDistance,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          start: `-${offset}px top`, // 🔥 start corrigido sem mover lógica
-          end: `+=${scrollDistance}`,
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          markers: true,
-        },
-      })
+      const ctx = gsap.context(() => {
+        gsap.to(wrapper, {
+          x: () => -getScrollAmount(),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: trigger, // 🔥 O gatilho agora é o contêiner Pai
+            pin: section, // 🔥 Nós fixamos (pin) apenas o contêiner Filho
+            start: 'top top',
+            end: () => `+=${getScrollAmount()}`,
+            scrub: 1,
+            pinSpacing: true, // 🔥 Garante que o GSAP crie o espaço para empurrar a próxima seção para baixo
+            invalidateOnRefresh: true,
+          },
+        })
+      }, trigger)
 
       ScrollTrigger.refresh()
-    }, section)
 
-    return () => {
-      section.style.height = ''
-      ctx.revert()
-    }
-  }, [])
+      return () => ctx.revert()
+    })
+
+    return () => mm.revert()
+  }, [repos])
 
   return (
-    <div ref={sectionRef} className="relative w-full overflow-hidden">
-      {/* Wrapper horizontal agora SEM px, SEM margin, SEM gaps que afetam o cálculo */}
+    <div ref={triggerRef} className="relative w-full">
+      {/* 1. CONTÊINER PAI (Trigger): É ele que vai crescer invisivelmente para segurar a rolagem vertical */}
 
-      <div className="pb-20 w-full flex justify-center">
-        <GithubPinnedHeader />
-      </div>
-
+      {/* 2. CONTÊINER FILHO (Pinned): Fica com h-screen e fixo na tela enquanto o usuário dá o scroll */}
       <div
-        ref={wrapperRef}
-        className="flex w-max gap-12 will-change-transform px-4"
+        ref={sectionRef}
+        className="w-full h-screen flex flex-col justify-center overflow-hidden relative"
       >
-        {repos.map((repo) => (
-          <GithubPinnedCard key={repo.id} repo={repo} />
-        ))}
-      </div>
+        <div className="pb-10 w-full flex justify-center shrink-0">
+          <GithubPinnedHeader />
+        </div>
 
-      <div className="z-10 w-full flex justify-center mt-16">
-        <ScrollNextSection />
+        <div
+          ref={wrapperRef}
+          className="flex w-max gap-8 md:gap-12 px-4 md:px-8 will-change-transform"
+        >
+          {repos.map((repo) => (
+            <GithubPinnedCard key={repo.id} repo={repo} />
+          ))}
+
+          {/* 🔥 Bônus: Div fantasma para criar uma "margem de respiro" após o último card */}
+          <div className="w-[5vw] shrink-0" />
+        </div>
+
+        <div className="z-10 w-full flex justify-center mt-12 shrink-0">
+          <ScrollNextSection />
+        </div>
       </div>
     </div>
   )
