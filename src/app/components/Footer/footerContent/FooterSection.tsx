@@ -1,20 +1,26 @@
+// FooterSection.tsx
 'use client'
-
-import { FooterWaves } from '../footerWaves/FooterWaves'
+import { useRef } from 'react'
 import { FooterTitle } from './FooterTitle'
 import { FooterSocialLinks } from './FooterSocialLinks'
 import { FooterSignature } from './FooterSignature'
 import { FooterCopyright } from './FooterCopyright'
+import { CurveSwipe } from '../curveSwipe/CurveSwipe'
 
 export function FooterSection() {
-  return (
-    <footer className="relative w-full overflow-hidden">
-      {/* Waves visual layer */}
-      <FooterWaves />
+  const footerRef = useRef<HTMLElement>(null)
 
-      {/* Real footer content */}
-      <section className="relative z-10 bg-slate-800 pt-32 pb-12">
-        <div className="flex flex-col items-center text-center px-6 gap-12 mb-32">
+  return (
+    // Adicionamos a ref aqui para ser o trigger da animação
+    <footer
+      ref={footerRef}
+      className="relative w-full overflow-hidden bg-transparent"
+    >
+      {/* Passamos a ref do pai para o componente de animação saber quando começar */}
+      <CurveSwipe triggerRef={footerRef} />
+
+      <section className="relative z-10 pt-32 pb-12">
+        <div className="flex flex-col items-center text-center px-6 gap-12 mb-64">
           <FooterTitle />
           <FooterSocialLinks />
         </div>
