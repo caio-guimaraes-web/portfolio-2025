@@ -1,13 +1,19 @@
-//cursor custom GSAP
-export function LetsTalkCursor() {
+// LetsTalkCursor.tsx
+'use client'
+
+import { forwardRef } from 'react'
+
+export const LetsTalkCursor = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div
+      ref={ref}
       className="
-        fixed top-0 left-0 z-50
+        fixed top-10 left-0 z-50
         w-12 h-12
         -translate-x-1/2 -translate-y-1/2
-        pointer-events-none
+        pointer-events-none outline-none
         hidden lg:flex items-center justify-center
+        animate-pulse
       "
     >
       <svg
@@ -24,4 +30,6 @@ export function LetsTalkCursor() {
       </svg>
     </div>
   )
-}
+})
+
+LetsTalkCursor.displayName = 'LetsTalkCursor'

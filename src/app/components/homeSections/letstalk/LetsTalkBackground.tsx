@@ -5,7 +5,7 @@ export function LetsTalkBackground() {
         absolute inset-0
         flex items-center justify-center
         pointer-events-none
-        opacity-40
+        opacity-90
       "
     >
       <img
@@ -14,6 +14,7 @@ export function LetsTalkBackground() {
         className="
           w-full max-w-[1200px]
           select-none
+          animate-[ping_3s_cubic-bezier(0,0,0.2,1)_infinite]
         "
       />
     </div>
