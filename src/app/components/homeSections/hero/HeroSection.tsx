@@ -37,7 +37,7 @@ export function HeroSection() {
           trigger: section,
           start: 'top top',
           end: () => `+=${scrollDistance}`,
-          scrub: true,
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
