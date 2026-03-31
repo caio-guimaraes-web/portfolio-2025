@@ -1,9 +1,69 @@
 // LetsTalkCursor.tsx
 'use client'
 
-import { forwardRef } from 'react'
+import { useEffect, forwardRef } from 'react'
+import gsap from 'gsap'
 
 export const LetsTalkCursor = forwardRef<HTMLDivElement>((_, ref) => {
+  useEffect(() => {
+    if (window.innerWidth < 1024) return // desabilita em mobile
+
+    const trailCount = 4
+    const colors = ['#00ff6a', '#B6EF2E'] // azul e verde
+    const container = document.createElement('div')
+    container.className =
+      'pointer-events-none fixed top-0 left-0 w-full h-full z-50'
+    document.body.appendChild(container)
+
+    const particles: HTMLSpanElement[] = []
+    for (let i = 0; i < trailCount; i++) {
+      const el = document.createElement('span')
+      el.className = 'absolute w-3 h-3 rounded-full mix-blend-screen'
+      el.style.backgroundColor = colors[i % colors.length]
+      container.appendChild(el)
+      particles.push(el)
+    }
+
+    let index = 0
+    let mousePos = { x: 0, y: 0 }
+
+    window.addEventListener('mousemove', (e) => {
+      mousePos.x = e.clientX
+      mousePos.y = e.clientY
+      animateParticle()
+    })
+
+    function animateParticle() {
+      const el = particles[index % trailCount]
+      gsap.killTweensOf(el)
+      gsap.set(el, {
+        x: mousePos.x,
+        y: mousePos.y,
+        opacity: 1,
+        scale: 0.6,
+      })
+      gsap.to(el, {
+        y: mousePos.y - 20, // sobe um pouco
+        duration: 0.1,
+        ease: 'power1.out',
+        onComplete: () => {
+          gsap.to(el, {
+            y: mousePos.y + 80, // depois cai
+            opacity: 0,
+            scale: 1.9,
+            duration: 0.8,
+            ease: 'back.in(1.2)',
+          })
+        },
+      })
+      index++
+    }
+
+    return () => {
+      container.remove()
+    }
+  }, [])
+
   return (
     <div
       ref={ref}
@@ -13,22 +73,8 @@ export const LetsTalkCursor = forwardRef<HTMLDivElement>((_, ref) => {
         -translate-x-1/2 -translate-y-1/2
         pointer-events-none outline-none
         hidden lg:flex items-center justify-center
-        animate-pulse
       "
-    >
-      <svg
-        width="40"
-        height="37"
-        viewBox="0 0 40 37"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 37H7.27273V14.8H0V37ZM40 16.65C40 14.615 38.3636 12.95 36.3636 12.95H24.8909L26.6182 4.4955L26.6727 3.9035C26.6727 3.145 26.3636 2.442 25.8727 1.9425L23.9455 0L11.9818 12.1915C11.3091 12.8575 10.9091 13.7825 10.9091 14.8V33.3C10.9091 35.335 12.5455 37 14.5455 37H30.9091C32.4182 37 33.7091 36.075 34.2545 34.743L39.7455 21.7005C39.9091 21.275 40 20.831 40 20.35V16.65Z"
-          fill="#B6EF2E"
-        />
-      </svg>
-    </div>
+    />
   )
 })
 
