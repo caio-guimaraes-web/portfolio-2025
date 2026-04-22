@@ -5,10 +5,13 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { HeroTextAnimation } from './HeroTextAnimation'
 import { HeroFooter } from './HeroFooter'
+import { useHomepageData } from '@/hooks/useHomepageData'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export function HeroSection() {
+  const { heroIntro } = useHomepageData()
+
   const sectionRef = useRef<HTMLElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
 
@@ -27,7 +30,6 @@ export function HeroSection() {
 
     if (scrollDistance <= 0) return
 
-    // 🔥 V6 — definir altura ANTES de criar ScrollTrigger
     const totalHeight = viewportHeight + scrollDistance
     section.style.height = `${totalHeight}px`
 
@@ -41,7 +43,6 @@ export function HeroSection() {
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
-          //markers: true, // 🔎 manter para validar
         },
       })
 
@@ -50,7 +51,6 @@ export function HeroSection() {
         ease: 'none',
       })
 
-      // 🔥 V6 — forçar recalculo após layout estar pronto
       ScrollTrigger.refresh()
     }, section)
 
@@ -72,13 +72,15 @@ export function HeroSection() {
         <div className="flex flex-col justify-center px-6 pt-32 lg:px-24">
           <div className="space-y-2 mb-4">
             <p className="text-xl lg:text-2xl text-gray-300 font-light flex items-center gap-2">
-              Hello <span className="animate-pulse">👋</span>,
+              {heroIntro.greeting}
             </p>
+
             <p className="text-xl lg:text-2xl text-gray-300 font-light">
-              my name is Caio Guimarães.
+              {heroIntro.name}
             </p>
+
             <p className="text-xl lg:text-2xl text-gray-300 font-light">
-              I&apos;m a ...
+              {heroIntro.rolePrefix}
             </p>
           </div>
         </div>
@@ -87,7 +89,7 @@ export function HeroSection() {
 
         <div className="w-full px-6 lg:px-24">
           <p className="text-sm lg:text-lg tracking-[0.5em] text-gray-500 font-light mt-2 uppercase text-center w-full">
-            Front-end Focused
+            {heroIntro.bottomTag}
           </p>
         </div>
 
