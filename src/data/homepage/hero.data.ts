@@ -14,7 +14,7 @@ export interface HeroAudienceData {
 
 export const heroIntroData: HeroIntroData = {
   greeting: 'Hello 👋,',
-  name: 'my name is gostosão.',
+  name: 'my name is Caio Guimarães.',
   rolePrefix: "I'm a ...",
   bottomTag: 'Front-end Focused',
 }
