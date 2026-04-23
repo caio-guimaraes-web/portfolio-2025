@@ -1,13 +1,15 @@
+// SkillsAccordion.tsx
 import { Accordion } from '@/components/ui/accordion'
-
 import { SkillsAccordionItem } from './SkillsAccordionItem'
 
-import { skillsData } from './skills.data'
+import { homepageData } from '@/data/homepage'
 
 export function SkillsAccordion() {
+  const groups = homepageData.skills.groups
+
   return (
     <Accordion type="multiple" className="w-full flex flex-col gap-2">
-      {skillsData.map((group) => (
+      {groups.map((group) => (
         <SkillsAccordionItem
           key={group.id}
           value={group.id}

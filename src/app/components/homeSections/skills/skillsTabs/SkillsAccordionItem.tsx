@@ -5,7 +5,7 @@ import {
 } from '@/components/ui/accordion'
 
 import { SkillTag } from '../../../reusable/skillTag/SkillTag'
-import { SkillItem } from './skills.data'
+import { SkillItem } from '@/data/homepage/skills.data'
 
 interface SkillsAccordionItemProps {
   value: string
