@@ -2,8 +2,11 @@
 'use client'
 
 import { HomeBiggerCTA } from '@/app/components/reusable/homeBiggerCTA/HomeBiggerCTA'
+import { homepageData } from '@/data/homepage'
 
 export function LetsTalkActions() {
+  const { ctas } = homepageData.letsTalk
+
   return (
     <div
       className="
@@ -12,29 +15,20 @@ export function LetsTalkActions() {
         relative z-10
       "
     >
-      {/* CTA 1 */}
-      <div
-        className="group"
-        data-cta="services"
-        onMouseEnter={() => {}}
-        onMouseLeave={() => {}}
-      >
-        <HomeBiggerCTA subtext="goTo" uppertext="SERVICES" href="/services" />
-      </div>
-
-      {/* CTA 2 */}
-      <div
-        className="group"
-        data-cta="talk"
-        onMouseEnter={() => {}}
-        onMouseLeave={() => {}}
-      >
-        <HomeBiggerCTA
-          subtext="let’s"
-          uppertext="TALK"
-          href="https://calendly.com/seu-link"
-        />
-      </div>
+      {ctas.map((cta) => (
+        <div key={cta.id} className="group" data-cta={cta.id}>
+          <HomeBiggerCTA
+            classes={
+              cta.disabled
+                ? 'cursor-not-allowed pointer-events-none opacity-20'
+                : ''
+            }
+            subtext={cta.subtext}
+            uppertext={cta.uppertext}
+            href={cta.href}
+          />
+        </div>
+      ))}
     </div>
   )
 }

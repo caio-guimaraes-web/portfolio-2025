@@ -10,11 +10,15 @@ import { LetsTalkOverlay } from './LetsTalkOverlay'
 import { LetsTalkCursor } from './LetsTalkCursor'
 import { LetsTalkActions } from './LetsTalkActions'
 
+import { homepageData } from '@/data/homepage'
+
 gsap.registerPlugin(ScrollTrigger)
 
 export function LetsTalkSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const cursorRef = useRef<HTMLDivElement | null>(null)
+
+  const { title } = homepageData.letsTalk
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -99,8 +103,8 @@ export function LetsTalkSection() {
       {/* Content */}
       <div className="relative z-10 text-center px-6">
         <h2 className="lt-title text-white text-4xl md:text-5xl uppercase font-black mb-16">
-          Shall we talk about <br />
-          <span className="text-cyan-100">your projects?</span>
+          {title.line1} <br />
+          <span className="text-cyan-100">{title.highlight}</span>
         </h2>
 
         <div className="lt-actions">
