@@ -1,31 +1,15 @@
 // ImpactPhraseContent.tsx
 
 import React from 'react'
+import { homepageData } from '@/data/homepage'
 
 export function ImpactPhraseContent() {
-  return (
-    <div className="max-w-4xl text-center">
-      <p
-        className="
-          text-xl sm:text-2xl md:text-3xl lg:text-4xl
-          font-light leading-relaxed
-          text-white/90
-        "
-      >
-        Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis
-        santis. Tá deprimidis, eu conheço uma cachacis que pode alegrar sua
-        vidis.
-      </p>
+  const { phrase } = homepageData.impactPhrase
 
-      <p
-        className="
-          mt-6
-          text-base sm:text-lg
-          text-white/70
-        "
-      >
-        Morbi viverra placerat justo, vel pharetra turpis. Nulla id gravida
-        magna, ut semper sapien.
+  return (
+    <div className="max-w-4xl text-center group">
+      <p className="font-space text-xl leading-relaxed sm:text-2xl sm:leading-relaxed md:text-3xl md:leading-relaxed lg:text-4xl lg:leading-relaxed font-light text-cyan-300 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+        {phrase}
       </p>
     </div>
   )

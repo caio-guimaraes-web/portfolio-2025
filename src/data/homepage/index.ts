@@ -4,6 +4,7 @@ import { heroIntroData, heroAudienceData } from './hero.data'
 import { aboutData } from './about.data'
 import { skillsData } from './skills.data'
 import { gitPinnedData } from './gitpinned.data'
+import { impactPhraseData } from './impactPhrase.data'
 
 export const homepageData = {
   heroIntro: heroIntroData,
@@ -11,4 +12,5 @@ export const homepageData = {
   about: aboutData,
   skills: skillsData,
   gitPinned: gitPinnedData,
+  impactPhrase: impactPhraseData,
 }
