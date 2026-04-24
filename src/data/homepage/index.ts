@@ -6,6 +6,7 @@ import { skillsData } from './skills.data'
 import { gitPinnedData } from './gitpinned.data'
 import { impactPhraseData } from './impactPhrase.data'
 import { letsTalkData } from './letsTalk.data'
+import { footerData } from './footer.data'
 
 export const homepageData = {
   heroIntro: heroIntroData,
@@ -15,4 +16,5 @@ export const homepageData = {
   gitPinned: gitPinnedData,
   impactPhrase: impactPhraseData,
   letsTalk: letsTalkData,
+  footer: footerData,
 }

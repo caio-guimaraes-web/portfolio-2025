@@ -1,7 +1,9 @@
+// FooterCopyright.tsx
+
+import { homepageData } from '@/data/homepage'
+
 export function FooterCopyright() {
-  return (
-    <div className="text-center text-xs text-neutral-500">
-      © 2025 Caio Guimarães Portfolio – all rights reserved
-    </div>
-  )
+  const { copyright } = homepageData.footer
+
+  return <div className="text-center text-xs text-neutral-500">{copyright}</div>
 }
