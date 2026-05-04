@@ -29,7 +29,7 @@ export function GithubPinnedScroll({ repos }: Props) {
 
     const mm = gsap.matchMedia()
 
-    mm.add('(min-width: 768px) and (hover: hover)', () => {
+    mm.add('(min-width: 1024px)', () => {
       const getScrollAmount = () => {
         const cardsWidth = wrapper.scrollWidth
         const viewportWidth = window.innerWidth
