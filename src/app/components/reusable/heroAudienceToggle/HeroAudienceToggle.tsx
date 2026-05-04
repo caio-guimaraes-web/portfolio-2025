@@ -19,7 +19,10 @@ export function HeroAudienceToggle({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn('flex items-start gap-4 text-sm text-gray-400', className)}
+      className={cn(
+        'group flex items-start gap-4 text-sm text-gray-400',
+        className,
+      )}
     >
       <button
         onClick={handleToggle}
@@ -33,7 +36,7 @@ export function HeroAudienceToggle({ className }: { className?: string }) {
           width="20"
           height="20"
           viewBox="0 0 24 24"
-          className="stroke-current"
+          className="stroke-current transition-colors duration-200 group-hover:text-cyan-400"
           fill="none"
           strokeWidth="2"
         >
@@ -43,8 +46,9 @@ export function HeroAudienceToggle({ className }: { className?: string }) {
 
       <div className="relative overflow-hidden">
         <p
+          onClick={handleToggle}
           className={cn(
-            'max-w-[420px] text-sm leading-relaxed transition-all duration-300',
+            'max-w-[420px] text-sm leading-relaxed transition-all duration-300 cursor-pointer group-hover:text-cyan-400',
             isRecruiter
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-2 absolute',
@@ -54,8 +58,9 @@ export function HeroAudienceToggle({ className }: { className?: string }) {
         </p>
 
         <p
+          onClick={handleToggle}
           className={cn(
-            'max-w-[420px] text-sm leading-relaxed transition-all duration-300',
+            'max-w-[420px] text-sm leading-relaxed transition-all duration-300 cursor-pointer group-hover:text-cyan-400',
             !isRecruiter
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-2 absolute',
