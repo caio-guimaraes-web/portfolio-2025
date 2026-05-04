@@ -11,7 +11,7 @@ export function GithubPinnedHeader() {
     <div className="max-w-2xl flex flex-col gap-6">
       <HomeSectionsTitle text={gitPinned.title} classes="text-center" />
 
-      <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
+      <p className="text-gray-400 text-center text-base sm:text-lg leading-relaxed">
         {gitPinned.description}
       </p>
     </div>

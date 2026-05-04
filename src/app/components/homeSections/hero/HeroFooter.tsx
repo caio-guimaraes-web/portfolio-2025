@@ -12,7 +12,7 @@ export function HeroFooter() {
   return (
     <div className="w-full flex flex-col gap-8 lg:gap-0 lg:flex-row justify-between items-end text-white pb-8">
       {/* Área Esquerda: Botão de Toggle (Visível apenas em Desktop no design original, mas útil em ambos) */}
-      <div className="hidden lg:flex flex-col gap-2">
+      <div className="hidden lg:flex flex-col gap-2 opacity-0">
         <div className="flex items-center gap-2 text-sm text-gray-400">
           <div className="flex flex-col items-center gap-1">
             <span className="text-[10px] uppercase tracking-widest">
