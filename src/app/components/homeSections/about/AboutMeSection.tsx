@@ -41,7 +41,7 @@ export function AboutMeSection() {
 
       {/* INDICADOR DE SCROLL */}
       <div className="z-10 w-full flex justify-center mt-12">
-        <ScrollNextSection />
+        <ScrollNextSection anchorId="skills" />
       </div>
     </section>
   )

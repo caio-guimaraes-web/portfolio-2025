@@ -88,7 +88,7 @@ export function GithubPinnedScroll({ repos }: Props) {
         </div>
 
         <div className="z-10 w-full flex justify-center mt-12 shrink-0">
-          <ScrollNextSection />
+          <ScrollNextSection anchorId="impact" />
         </div>
       </div>
     </div>

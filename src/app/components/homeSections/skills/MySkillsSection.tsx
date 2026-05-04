@@ -14,9 +14,6 @@ export function MySkillsSection() {
       id="skills"
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden text-white px-6 lg:px-24 pt-32 pb-10"
     >
-      {/* BG Effects -  Glow sutil verde-ciano, decidir depois se será animado */}
-      <div className="absolute bottom-[-20%] left-[-10%] w-[45vw] h-[60vh] bg-cyan-900/20 rounded-full blur-[140px] pointer-events-none" />
-
       {/* CONTEÚDO PRINCIPAL */}
       <div
         className="z-10 flex-1 w-full flex flex-col sm:flex-row items-center
@@ -40,7 +37,7 @@ export function MySkillsSection() {
 
       {/* INDICADOR DE SCROLL */}
       <div className="z-10 w-full flex justify-center mt-12">
-        <ScrollNextSection />
+        <ScrollNextSection anchorId="projects" />
       </div>
     </section>
   )

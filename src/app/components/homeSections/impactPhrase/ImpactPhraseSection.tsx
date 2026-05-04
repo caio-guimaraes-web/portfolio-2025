@@ -27,7 +27,7 @@ export function ImpactPhraseSection() {
 
       {/* Scroll Indicator */}
       <div className="relative z-10 w-full flex justify-center pb-10">
-        <ScrollNextSection />
+        <ScrollNextSection anchorId="lets-talk" />
       </div>
     </section>
   )
