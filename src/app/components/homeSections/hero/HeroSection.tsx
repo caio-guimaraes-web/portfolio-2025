@@ -71,15 +71,15 @@ export function HeroSection() {
       <div className="sticky top-0 h-screen flex flex-col justify-around">
         <div className="flex flex-col justify-center px-6 pt-32 lg:px-12">
           <div className="space-y-2 mb-4">
-            <p className="text-xl lg:text-2xl text-gray-300 font-light flex items-center gap-2">
+            <p className="text-sm lg:text-xl xl:text-2xl text-gray-300 font-light flex items-center gap-2">
               {heroIntro.greeting}
             </p>
 
-            <p className="text-xl lg:text-2xl text-gray-300 font-light">
+            <p className="text-sm lg:text-xl xl:text-2xl text-gray-300 font-light">
               {heroIntro.name}
             </p>
 
-            <p className="text-xl lg:text-2xl text-gray-300 font-light">
+            <p className="text-sm lg:text-xl xl:text-2xl text-gray-300 font-light">
               {heroIntro.rolePrefix}
             </p>
           </div>
