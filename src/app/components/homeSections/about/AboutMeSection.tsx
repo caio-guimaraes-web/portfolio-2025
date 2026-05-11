@@ -24,7 +24,7 @@ export function AboutMeSection() {
       </div>
 
       {/* HEADLINE SUPERIOR */}
-      <div className="z-10 w-full text-center mt-14">
+      <div className="z-10 w-full text-center mb-4 lg:mb-0 lg:mt-14">
         <AnimatedHeadline />
       </div>
 

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
-const words = ['Aesthetic Sense', 'Strategic Vision', 'Performance Mindset']
+const words = ['Aesthetic Sense', 'Strategic Vision', 'Performance']
 
 export function AnimatedHeadline() {
   const containerRef = useRef<HTMLHeadingElement>(null)
@@ -72,7 +72,7 @@ export function AnimatedHeadline() {
   return (
     <h2
       ref={containerRef}
-      className="text-xl lg:text-2xl tracking-[0.6em] text-gray-500 font-light uppercase"
+      className="text-md lg:text-2xl tracking-[0.6em] text-gray-500 font-light uppercase"
     />
   )
 }
