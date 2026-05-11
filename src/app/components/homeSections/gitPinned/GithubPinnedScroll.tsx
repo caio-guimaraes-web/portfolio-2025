@@ -69,7 +69,7 @@ export function GithubPinnedScroll({ repos }: Props) {
       {/* 2. CONTÊINER FILHO (Pinned): Fica com h-screen e fixo na tela enquanto o usuário dá o scroll */}
       <div
         ref={sectionRef}
-        className="w-full h-screen flex flex-col justify-center overflow-hidden relative"
+        className="w-full h-screen flex flex-col justify-center overflow-x-auto lg:overflow-hidden relative"
       >
         <div className="pb-10 w-full flex justify-center shrink-0">
           <GithubPinnedHeader />
