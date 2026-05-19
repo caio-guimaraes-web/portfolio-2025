@@ -1,3 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
+
+/* Explanation:
+The best approach is to keep <img> because:
+- It's lightweight and doesn't require the next/image handling.
+- It doesn't gain any optimization with Image.
+- It's simpler and more performant for animated SVGs.
+- It avoids unexpected layout shifts, since SVG doesn't have native dimensions useful to Image.
+Therefore, we will use <img> and simply ignore the ESLint rule locally. 
+*/
 export function LetsTalkBackground() {
   return (
     <div
