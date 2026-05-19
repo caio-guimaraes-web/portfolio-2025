@@ -1,17 +1,12 @@
-import {
-  GitIcon,
-  LinkedinIcon,
-  BehanceIcon,
-  WhatsAppIcon,
-} from '@/app/components/reusable/socialMediaIconComp/SocialMediaIconsComp'
+import { socialMediaLinks } from '@/data/socialMediaLinks.data'
+import { SocialMediaLink } from '@/app/components/reusable/socialMediaIconComp/SocialMediaLink'
 
 export function FooterSocialLinks() {
   return (
     <div className="flex gap-6">
-      <GitIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
-      <LinkedinIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
-      <BehanceIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
-      <WhatsAppIcon className="w-9 h-9 hover:text-cyan-400 cursor-pointer transition-colors" />
+      {socialMediaLinks.map(({ name, Icon, url }) => (
+        <SocialMediaLink key={name} Icon={Icon} url={url} />
+      ))}
     </div>
   )
 }
