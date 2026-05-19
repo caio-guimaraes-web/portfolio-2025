@@ -23,8 +23,12 @@ const spaceGrotesk = FontSpace({
 })
 
 export const metadata: Metadata = {
-  title: 'Caio Guimarães Portfolio 2025',
-  description: 'Fullstack Web Developer Portfolio',
+  title: 'Caio Guimarães Portfolio 2026',
+  description:
+    'Fullstack Web Developer. I help businesses and professionals transform ideas into high-quality digital products, combining design sensibility with robust technical execution.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
