@@ -1,9 +1,9 @@
 // components/Navbar/navItems.ts
 
 export const navItems = [
-  { label: 'Início', target: 'hero' },
-  { label: 'Sobre', target: 'about' },
+  { label: 'Start', target: 'hero' },
+  { label: 'About', target: 'about' },
   { label: 'Skills', target: 'skills' },
-  { label: 'Projetos', target: 'projects' },
-  { label: 'Contato', target: 'lets-talk' },
+  { label: 'Projects', target: 'projects' },
+  { label: 'Contact', target: 'lets-talk' },
 ]

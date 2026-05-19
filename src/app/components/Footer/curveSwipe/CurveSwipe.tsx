@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 interface CurveSwipeProps {
-  triggerRef: React.RefObject<HTMLElement>
+  triggerRef: React.RefObject<HTMLElement | null>
 }
 
 export function CurveSwipe({ triggerRef }: CurveSwipeProps) {
