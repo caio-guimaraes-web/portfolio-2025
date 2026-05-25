@@ -15,7 +15,7 @@ describe('fetchGithubRepos', () => {
         html_url: 'https://github.com/example',
         homepage: 'https://example.com',
         language: 'TypeScript',
-        topics: ['react', 'design-system'],
+        topics: ['react', 'design-system', 'pinned'],
         open_graph_image_url: 'https://fakeimage.com/og.png',
       },
     ]
@@ -32,7 +32,7 @@ describe('fetchGithubRepos', () => {
     expect(r.id).toBe('123')
     expect(r.name).toBe('repo-example')
     expect(r.languages).toEqual(['TypeScript'])
-    expect(r.topics).toEqual(['react', 'design-system'])
+    expect(r.topics).toEqual(['react', 'design-system', 'pinned'])
     expect(r.socialImage).toBe('https://fakeimage.com/og.png')
   })
 
@@ -45,6 +45,8 @@ describe('fetchGithubRepos', () => {
         html_url: 'https://github.com/fallback',
         homepage: null,
         language: null,
+        topics: ['pinned'], // ← necessário para passar pelo filtro
+        open_graph_image_url: null,
       },
     ]
 
@@ -56,9 +58,13 @@ describe('fetchGithubRepos', () => {
     const result = await fetchGithubRepos('caio-guimaraes-web')
     const r = result[0]
 
-    expect(r.topics).toEqual([])
-    expect(r.socialImage).toBe(null)
+    expect(r.topics).toEqual(['pinned'])
     expect(r.languages).toEqual([])
+
+    const expectedFallback =
+      'https://opengraph.githubassets.com/1/caio-guimaraes-web/fallback-example'
+
+    expect(r.socialImage).toBe(expectedFallback)
   })
 
   it('lança erro quando API retorna status inválido', async () => {
