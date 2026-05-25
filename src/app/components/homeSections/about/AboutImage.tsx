@@ -1,7 +1,7 @@
 //AboutImage.tsx
 import React from 'react'
 import Image from 'next/image'
-import profileImg from '@/assets/homeSections/aboutSection/profile.png'
+import profileImg from '../../../../assets/homeSections/aboutSection/profile.png'
 
 export function AboutImage() {
   return (
