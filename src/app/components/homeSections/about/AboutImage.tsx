@@ -10,6 +10,7 @@ export function AboutImage() {
       <Image
         src={profileImg}
         alt="Photo of Caio Guimarães"
+        fill
         className="w-auto h-full object-cover rounded-xl opacity-50"
       />
     </div>
